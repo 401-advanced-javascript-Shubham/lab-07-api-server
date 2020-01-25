@@ -1,0 +1,29 @@
+{
+  "name": "lab-07-api-server",
+  "version": "0.0.1",
+  "description": "ExpressApi",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/401-advanced-javascript-Shubham/lab-07-api-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/401-advanced-javascript-Shubham/lab-07-api-server/issues"
+  },
+  "homepage": "https://github.com/401-advanced-javascript-Shubham/lab-07-api-server#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "@code-fellows/supergoose": "^1.0.1",
+    "jest": "^25.1.0"
+  }
+}
