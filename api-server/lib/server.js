@@ -48,15 +48,37 @@ function getAllCategory(req,res){
 }
 
 function getOneCategory(req,res){
-  res.status(200).send('get one');
+  category.get(id)
+  .then(results =>{
+    let id = results.params.id;
+     let record = category.filter((record) => record.id === parseInt(id));
+    res.json(record[0]);
+
+  })
+  res.status(200).json(results);
 }
 
-function deleteCategory(req,res){
-  res.status(200).send('delete');
+function deleteCategory(req,res,next){
+  category.delete(id)
+  .then(record =>{
+    let id = record.params.id;
+       category = category.filter((record) => record.id !== parseInt(id));
+       res.json({});
+
+  })
+  res.status(200).json(record);
 }
 
-function updateCategory(req,res){
-  res.status(200).send('update');
+function updateCategory(req,res,next){
+  category.put(id)
+  .then(results =>{
+    let idUpdate = results.params.id;
+    let { name } = results.body;
+    let updatedRecord = { name };
+    category = category.map((results) => (results.id === parseInt(idUpdate)) ? updatedRecord : results);
+
+  })
+  res.status(200).json(results);
 }
 
 function createCategory(req,res,next){
@@ -72,20 +94,50 @@ function createCategory(req,res,next){
 
 
 function getAllProduct(req,res){
-  res.status(200).send('get all');
+  category.get()
+     .then(results => {
+      let output = {
+        count: results.length,
+        results
+      }
+      res.status(200).json(output);
+     })
 }
 
 function getOneProduct(req,res){
-  res.status(200).send('get one');
+  category.get(id)
+  .then(results =>{
+    let id = results.params.id;
+     let record = category.filter((record) => record.id === parseInt(id));
+    res.json(record[0]);
+
+  })
+  res.status(200).json(results);
 }
 
-function deleteProduct(req,res){
-  res.status(200).send('delete');
+function deleteProduct(req,res,next){
+  category.delete(id)
+  .then(record =>{
+    let id = record.params.id;
+       category = category.filter((record) => record.id !== parseInt(id));
+       res.json({});
+
+  })
+  res.status(200).json(record);
 }
 
-function updateProduct(req,res){
-  res.status(200).send('update');
+function updateProduct(req,res,next){
+  category.put(id)
+  .then(results =>{
+    let idUpdate = results.params.id;
+    let { name } = results.body;
+    let updatedRecord = { name };
+    category = category.map((results) => (results.id === parseInt(idUpdate)) ? updatedRecord : results);
+
+  })
+  res.status(200).json(results);
 }
+
 
 function createProduct(req,res,next){
   let record = req.body;
@@ -95,80 +147,7 @@ function createProduct(req,res,next){
      })
       .catch(error => next(error));
 }
-//let db = require('../lib/data.js');
 
-// app.get('/api/v1/products', (req, res, next) => {
-//   let count = db.length;
-//   let results = db;
-//   res.json({ count, results });
-// });
-
-// app.get('/api/v1/products/:id', (req, res, next) => {
-//   let id = req.params.id;
-//   let record = db.filter((record) => record.id === parseInt(id));
-//   res.json(record[0]);
-// });
-
-
-// app.post('/api/v1/products', (req, res, next) => {
-//   let { name } = req.body;
-//   let record = { name };
-//   record.id = db.length + 1;
-//   db.push(record);
-//   res.json(record);
-// });
-
-// app.put('/api/v1/products/:id', (req, res, next) => {
-//   let idToUpdate = req.params.id;
-//   let { name, id } = req.body;
-//   let updatedRecord = { name, id };
-//   db = db.map((record) => (record.id === parseInt(idToUpdate)) ? updatedRecord : record);
-//   res.json(updatedRecord);
-// });
-
-// app.delete('/api/v1/products/:id', (req, res, next) => {
-//   let id = req.params.id;
-//   db = db.filter((record) => record.id !== parseInt(id));
-//   res.json({});
-// });
-
-
-
-
-// app.get('/api/v1/categories', (req, res, next) => {
-//     let count = db.length;
-//     let results = db;
-//     res.json({ count, results });
-//   });
-  
-//   app.get('/api/v1/categories/:id', (req, res, next) => {
-//     let id = req.params.id;
-//     let record = db.filter((record) => record.id === parseInt(id));
-//     res.json(record[0]);
-//   });
-  
-  
-//   app.post('/api/v1/categories', (req, res, next) => {
-//     let { name } = req.body;
-//     let record = { name };
-//     record.id = db.length + 1;
-//     db.push(record);
-//     res.json(record);
-//   });
-  
-//   app.put('/api/v1/categories/:id', (req, res, next) => {
-//     let idToUpdate = req.params.id;
-//     let { name, id } = req.body;
-//     let updatedRecord = { name, id };
-//     db = db.map((record) => (record.id === parseInt(idToUpdate)) ? updatedRecord : record);
-//     res.json(updatedRecord);
-//   });
-  
-//   app.delete('/api/v1/categories/:id', (req, res, next) => {
-//     let id = req.params.id;
-//     db = db.filter((record) => record.id !== parseInt(id));
-//     res.json({});
-//   });
 
 
 // because these are defined last, they end up as catch-alls.
