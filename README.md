@@ -6,7 +6,7 @@
 
 ### Links and Resources
 * [submission PR](https://github.com/401-advanced-javascript-Shubham/lab-07-api-server/pull/1)
-* [Github Actions]()
+* [Github Actions](https://github.com/401-advanced-javascript-Shubham/lab-07-api-server/actions)
 
 #### Documentation
 * [api docs](http://xyz.com/api-docs) (API servers)
